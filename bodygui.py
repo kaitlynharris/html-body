@@ -30,6 +30,9 @@ def main():
     root = makeWindow()
     root.mainloop()
 
+def test():
+    pass
+
 
 if __name__ == '__main__':
     main()
