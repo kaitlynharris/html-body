@@ -25,6 +25,9 @@ def makeWindow():
 
     return root
 
+def test():
+    pass
+
 def main():
 
     root = makeWindow()
