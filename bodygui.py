@@ -2,36 +2,35 @@ from tkinter import *
 from tkinter import ttk
 import htmlgenerator
 
-def makeWindow():
+class Window():
 
-    def submit():
-        newtext = body.get(1.0, END)
-        htmlgenerator.createPage(newtext)
-        body.delete(1.0, END)
-        body.insert(1.0, 'Web page created.  If you would like to change the body again, please enter new text here.')
+    def __init__(self, master):
 
-    root = Tk()
-    root.wm_title("Webpage Text Entry")
+        def submit():
+            newtext = self.body.get(1.0, END)
+            htmlgenerator.createPage(newtext)
+            self.body.delete(1.0, END)
+            self.body.insert(1.0, 'Web page created.  If you would like to change the body again, please enter new text here.')
 
-    frame = ttk.Frame(root, relief = RAISED, padding=10)
-    frame.pack()
+        self.frame = ttk.Frame(master, relief = RAISED, padding=10)
+        self.frame.pack()
 
-    ttk.Label(frame, text = 'Enter new body text here:').grid(row = 0, column = 0)
-    body = Text(frame, width = 50, height = 10)
-    body.grid(row = 1, column = 0, columnspan = 2)
+        ttk.Label(self.frame, text = 'Enter new body text here:').grid(row = 0, column = 0)
+        self.body = Text(self.frame, width = 50, height = 10)
+        self.body.grid(row = 1, column = 0, columnspan = 2)
 
-    submitbutton = ttk.Button(frame, text = 'Create Page', command = submit)
-    submitbutton.grid(row = 2, column = 1)
+        self.submitbutton = ttk.Button(self.frame, text = 'Create Page', command = submit)
+        self.submitbutton.grid(row = 2, column = 1)
 
-    return root
+
+
 
 def main():
 
-    root = makeWindow()
+    root = Tk()
+    root.wm_title("Webpage Text Entry")
+    win = Window(root)
     root.mainloop()
-
-def test():
-    pass
 
 
 if __name__ == '__main__':
